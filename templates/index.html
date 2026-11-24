@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
+  <title>Weather Sensor Monitor</title>
+
+  <link
+    rel="stylesheet"
+    href="/static/style.css"
+  />
+
+  <script>
+    try {
+      if (localStorage.getItem("weather.theme") === "dark") {
+        document.documentElement.classList.add("dark");
+      }
+    } catch (error) {}
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+
+</head>
+
+
+<body>
+
+  <div class="container">
+
+    <header class="dashboard-header">
+
+      <h1>Weather Sensor Monitor</h1>
+
+      <button
+        id="theme"
+        type="button"
+        aria-label="Toggle Dark Mode"
+      >
+        🌙 Dark Mode
+      </button>
+
+    </header>
+
+
+    <div class="sensor-select">
+
+      <label for="sensorSelector">
+        Active Sensor:
+      </label>
+
+      <select id="sensorSelector">
+
+        <option
+          value=""
+          disabled
+          selected
+        >
+          Loading...
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <div class="cards">
+
+      <div class="card">
+
+        <h3>Temperature</h3>
+
+        <div
+          class="value"
+          id="temperature"
+        >
+          --
+        </div>
+
+      </div>
+
+
+      <div class="card">
+
+        <h3>Humidity</h3>
+
+        <div
+          class="value"
+          id="humidity"
+        >
+          --
+        </div>
+
+      </div>
+
+
+      <div class="card">
+
+        <h3>Pressure</h3>
+
+        <div
+          class="value"
+          id="pressure"
+        >
+          --
+        </div>
+
+      </div>
+
+
+      <div class="card">
+
+        <h3>Last Update</h3>
+
+        <div
+          class="value small"
+          id="lastUpdate"
+        >
+          --
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="range-buttons" role="group" aria-label="Time range">
+
+      <button
+        type="button"
+        class="range active"
+        data-range="hour"
+      >
+        Last hour
+      </button>
+
+      <button
+        type="button"
+        class="range"
+        data-range="day"
+      >
+        24 hours
+      </button>
+
+      <button
+        type="button"
+        class="range"
+        data-range="week"
+      >
+        7 days
+      </button>
+
+      <button
+        type="button"
+        class="range"
+        data-range="month"
+      >
+        Month
+      </button>
+
+      <button
+        type="button"
+        class="range"
+        data-range="all"
+      >
+        All
+      </button>
+
+    </div>
+
+
+    <div class="graph">
+
+      <canvas id="chart"></canvas>
+
+    </div>
+
+  </div>
+
+
+  <script src="/static/app.js"></script>
+
+</body>
+
+</html>
